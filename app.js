@@ -9,3 +9,5 @@ app.use(function(req, res){
 
 //create node.js http server and listen on port
 http.createServer(app).listen(8080);
+
+console.log('Running on http://localhost:8080/')
