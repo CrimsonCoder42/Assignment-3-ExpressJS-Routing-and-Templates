@@ -1,6 +1,7 @@
-var connect = require('connect');
-var http = require('http');
-var app = connect();
+const connect = require('connect');
+const http = require('http');
+const app = connect();
+const session = require('express-session')
 
 // respond to all requests
 app.use(function(req, res){
