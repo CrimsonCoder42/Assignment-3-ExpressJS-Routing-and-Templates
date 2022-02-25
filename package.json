@@ -18,6 +18,7 @@
   "homepage": "https://github.com/CrimsonCoder42/Assignment-3-ExpressJS-Routing-and-Templates#readme",
   "dependencies": {
     "connect": "^3.7.0",
+    "cookie-parser": "^1.4.6",
     "express-session": "^1.17.2"
   }
 }

@@ -5,14 +5,19 @@ const http = require('http');
 const url = require('url');
 const path = require('path');
 const fs = require('fs');
-const session = require('express-session');
+
 
 const app = connect();
+const session = require('express-session');
+const cookies = require('cookie-parser');
+
 app.use(session({
 	secret: "cscie31",
 	resave: true,
 	saveUninitialized: true
 }));
+
+app.use(cookies());
 
 app.use((req, res) => {
   // parse the URL into its component parts
@@ -51,8 +56,12 @@ app.use((req, res) => {
 			      req.session.views++
 			  } else {
 			    req.session.views = 1;
-			  }
-			  console.log("Session ID is %s, number visits this session: %s", req.session.id, req.session.views);
+              }
+              let views = req.cookies.views || 0;
+              res.setHeader('Set-Cookie', 'views=' + ++views);
+
+            
+			  console.log("Session ID is %s, number visits this session: %s", req.session.id, req.session.views, views);
 
                 res.writeHead(200);
                 res.sendFile('index.html');
