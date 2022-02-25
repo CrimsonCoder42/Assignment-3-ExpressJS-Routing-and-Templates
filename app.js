@@ -54,7 +54,8 @@ app.use((req, res) => {
 			  }
 			  console.log("Session ID is %s, number visits this session: %s", req.session.id, req.session.views);
 
-				res.writeHead(200);
+                res.writeHead(200);
+                res.sendFile('index.html');
 				res.end(data, 'binary', ()=>{
 					console.log("file delivered: " + pathname);
 				});
