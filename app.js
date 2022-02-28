@@ -14,7 +14,7 @@ const cookies = require('cookie-parser');
 app.use(session({
 	secret: "cscie31",
 	resave: true,
-	saveUninitialized: true
+	cookie: { maxAge:6000 }
 }));
 
 app.use(cookies());
@@ -59,8 +59,6 @@ app.use((req, res) => {
               }
               let views = req.cookies.views || 0;
               res.setHeader('Set-Cookie', 'views=' + ++views);
-
-            
 			  console.log("Session ID is %s, number visits this session: %s", req.session.id, req.session.views, views);
 
                 res.writeHead(200);
